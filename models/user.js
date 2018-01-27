@@ -7,7 +7,7 @@ let user_json={
   minlength:[5,"El password debe contener 5 caracteres o mas"],
   validate:{
     validator(pass){
-      return this.password_confirm==pass;
+      return this.password_confirm===pass;
     },
     message: "Las contraseñas no coinciden"
   }
