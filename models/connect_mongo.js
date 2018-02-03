@@ -1,8 +1,8 @@
 let mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/sistema');
+mongoose.connect(process.env.URL_CONNECT);
 let Schema = mongoose.Schema;
 
 module.exports ={
-  Schema:Schema,
-  mongoose:mongoose
+  Schema: Schema,
+  mongoose: mongoose
 };

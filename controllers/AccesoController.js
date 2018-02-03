@@ -1,4 +1,5 @@
-let User=require('../models/user').User;
+let User= require('../models/user').User;
+let crearToken= require('../servicios/crearToken');
 module.exports = {
     Index(req,res,next)
     {
@@ -16,11 +17,12 @@ module.exports = {
 
        });
        user.save().then(()=>{
-          res.status(200);
+         return res.status(200).send({token:crearToken(user)});
          res.json({mensaje: "Hemos guardado al usuario"});
        },(err)=>{
          console.log(String(err));
-         res.json({mensaje: "No pudimos guardar el usuario"});
+         res.status(500);
+         res.json({mensaje: "No pudimos guardar el usuario",err:String(err)});
        });
     },
     Login(req,res,next)
