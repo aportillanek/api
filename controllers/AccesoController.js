@@ -17,12 +17,12 @@ module.exports = {
 
        });
        user.save().then(()=>{
-         return res.status(200).send({token:crearToken(user)});
-         res.json({mensaje: "Hemos guardado al usuario"});
+         return res.status(200).send({mensaje:"Se ha guardo el usuario",token:crearToken(user)});
+         
        },(err)=>{
          console.log(String(err));
-         res.status(500);
-         res.json({mensaje: "No pudimos guardar el usuario",err:String(err)});
+         return res.status(500).send({mensaje: "No pudimos guardar el usuario",err:String(err)});
+        
        });
     },
     Login(req,res,next)
